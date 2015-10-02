@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{5D740DA8-F73C-4926-9563-07CA0701DCC6}"
+	ProjectSection(SolutionItems) = preProject
+		Database Scripts\Derby Database - Create.sql = Database Scripts\Derby Database - Create.sql
+		Database Scripts\Derby Stored Procs - Create.sql = Database Scripts\Derby Stored Procs - Create.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{23F322CC-2D9C-4FFE-B46D-9CE6B28F3A36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DerbyExport", "Src\DerbyExport\DerbyExport.csproj", "{FF3330D5-EE7C-4727-AEDD-6158DE8F6639}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Data", "Sample Data", "{4F4E13E0-278D-4219-A8B0-F5B00E1F3BEB}"
+	ProjectSection(SolutionItems) = preProject
+		Sample Data\Game Stats - Template - 2015-04.xlsx = Sample Data\Game Stats - Template - 2015-04.xlsx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF3330D5-EE7C-4727-AEDD-6158DE8F6639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF3330D5-EE7C-4727-AEDD-6158DE8F6639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF3330D5-EE7C-4727-AEDD-6158DE8F6639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF3330D5-EE7C-4727-AEDD-6158DE8F6639}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF3330D5-EE7C-4727-AEDD-6158DE8F6639} = {23F322CC-2D9C-4FFE-B46D-9CE6B28F3A36}
+	EndGlobalSection
+EndGlobal
