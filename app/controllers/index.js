@@ -2,11 +2,9 @@
 
 exports.index = function(req, res, next) {
 
-    res.render(
-        'index',
-        {
-            title: 'Slow Jams',
-            msg: 'Hello Derby!'
-        }
-    );
+    var options = {
+        root: __dirname + '/../views/'
+    };
+
+    res.sendFile('index.html', options);
 }
