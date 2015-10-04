@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Games</h1>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Home Team</th>
+                <th>Home Score</th>
+                <th>Away Team</th>
+                <th>Away Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="game in gamesData.games">
+                <td>{{game.GameDate}}</td>
+                <td>{{game.LeagueHome + ' ' + game.TeamHome}}</td>
+                <td>{{game.ScoreHome}}</td>
+                <td>{{game.LeagueAway + ' ' + game.TeamAway}}</td>
+                <td>{{game.ScoreAway}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
