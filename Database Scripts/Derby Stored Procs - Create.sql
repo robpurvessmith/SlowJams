@@ -170,11 +170,6 @@ BEGIN
                         ) AS uBox UNPIVOT (
                             Penalties FOR PositionPenalties IN (JammerPenalties, PivotPenalties, Blocker1Penalties, Blocker2Penalties, Blocker3Penalties)
                         ) AS uPen
-                        --CROSS APPLY (
-                        --    SELECT  CAST(MAX(CAST(PassOccurred AS smallint)) AS bit) AS PassOccurred
-                        --      FROM  etl.Lineups
-                        --     WHERE  GameDateTime = uPen.GameDateTime AND Period = uPen.Period AND Jam = uPen.Jam
-                        --) xPass
                  WHERE  uPen.PassOccurred = 0 AND uPen.Position = SUBSTRING(uPen.PositionBox, 0, LEN(uPen.PositionBox) - 2)
                         AND uPen.Position = SUBSTRING(uPen.PositionPenalties, 0, LEN(uPen.PositionPenalties) - 8)
             )
@@ -200,16 +195,11 @@ BEGIN
                         ) AS uBox UNPIVOT (
                             Penalties FOR PositionPenalties IN (JammerPenalties, PivotPenalties, Blocker1Penalties, Blocker2Penalties, Blocker3Penalties)
                         ) AS uPen
-                        --CROSS APPLY (
-                        --    SELECT  CAST(MAX(CAST(PassOccurred AS smallint)) AS bit) AS PassOccurred
-                        --      FROM  etl.Lineups
-                        --     WHERE  GameDateTime = uPen.GameDateTime AND Period = uPen.Period AND Jam = uPen.Jam
-                        --) xPass
                  WHERE  uPen.PassOccurred = 1 AND uPen.Position = SUBSTRING(uPen.PositionBox, 0, LEN(uPen.PositionBox) - 2)
                         AND uPen.Position = SUBSTRING(uPen.PositionPenalties, 0, LEN(uPen.PositionPenalties) - 8)
             )
             UPDATE  g
-               SET  PostPassBox = l.Box, PostPassPenalties = l.Penalties
+               SET  PostPassBox = l.Box, PostPassPenalties = l.Penalties, PassOccurred = 1
               FROM  dbo.GameJamPosition g
                     INNER JOIN dbo.GamePlayer gp ON gp.GameId = @GameId AND gp.PlayerId = g.PlayerId
                     INNER JOIN LineupNormalized l ON l.Period = g.Period AND l.Jam = g.Jam AND l.Team = g.Team AND l.Number = gp.Number;
@@ -219,26 +209,31 @@ BEGIN
               FROM  etl.Score s
                     INNER JOIN etl.IGRF i ON i.Team = s.Team AND i.Number = s.JammerNumber;
 
-
---- This one's incomplete - validate and add the lookup to GameJamPosition to determine PositionWhenPenalized
---- (If RowCount <= to Penalties, use position; otherwise sub Blocker for Jammer, and Jammer for Pivot
-WITH PenaltyData AS
-(
-    SELECT  ROW_NUMBER() OVER (PARTITION BY p.Jam, i.PlayerId ORDER BY p.PenaltyId) AS PenaltySeq,
-            @GameId AS GameId, p.Period, p.Jam, p.Team, i.PlayerId,
-            PenaltyId, PenaltyType, PenaltyName
-      FROM  etl.Penalties p
-            INNER JOIN etl.IGRF i ON i.Team = p.Team AND i.Number = p.PlayerNumber
-            INNER JOIN dbo.GameJamPosition gjp ON gjp.GameId = @GameId AND gjp.Period = p.Period
-                       AND gjp.Jam = p.Jam AND gjp.Team = p.Team AND gjp.PlayerId = i.PlayerId AND gjp.PassOccurred = 0
-            LEFT JOIN dbo.GameJamPosition gjp2 ON gjp2.GameId = @GameId AND gjp2.Period = p.Period
-                       AND gjp2.Jam = p.Jam AND gjp2.Team = p.Team AND gjp2.PlayerId = i.PlayerId AND gjp.PassOccurred = 1
-)
--- INSERT INTO dbo.GamJamPenalty (...)
-SELECT  GameId, Period, Jam, Team, PlayerId, PenaltyId,
-        NULL AS RoleWhenPenalized,
-        PenaltyType, PenaltyName
-  FROM  PenaltyData;
+            -- Fill in GameJamPenalty. Penalties are allocated to the player position before or after a star pass, in the ratio of pre-pass pentalties 
+            -- to total penalties, as recorded in the box columns. If # penalties noted in the box columns doesn't match the number of pentalies imported
+            -- to etl.Penalties, this provides a way to decide which position to assign to each penalty.
+            WITH PenaltyData AS
+            (
+                SELECT  ROW_NUMBER() OVER (PARTITION BY p.Jam, i.PlayerId ORDER BY p.PenaltyId) AS PenaltySeq,
+                        @GameId AS GameId, p.Period, p.Jam, p.Team, i.PlayerId,
+                        PenaltyId, PenaltyType, PenaltyName, gjp.Position,
+                        CASE WHEN (Penalties + PostPassPenalties = 0) THEN 1 ELSE Penalties / CAST(Penalties + PostPassPenalties AS decimal(6,2)) END AS PrePassRatio,
+                        xNum.NumberOfPenalties
+                  FROM  etl.Penalties p
+                        INNER JOIN etl.IGRF i ON i.Team = p.Team AND i.Number = p.PlayerNumber
+                        LEFT JOIN dbo.GameJamPosition gjp ON gjp.GameId = @GameId AND gjp.Period = p.Period
+                                   AND gjp.Jam = p.Jam AND gjp.Team = p.Team AND gjp.PlayerId = i.PlayerId
+                       CROSS APPLY (SELECT COUNT(*) AS NumberOfPenalties FROM etl.Penalties WHERE Period = p.Period AND Jam = p.Jam AND Team = i.Team AND PlayerNumber = i.Number) xNum
+            )
+            INSERT  INTO dbo.GameJamPenalty (GameId, Period, Jam, Team, PlayerId, PenaltyId, RoleWhenPenalized, PenaltyType, PenaltyName)
+            SELECT  GameId, Period, Jam, Team, PlayerId, PenaltyId,
+                    CASE WHEN PenaltySeq <= ROUND(NumberOfPenalties * PrePassRatio, 2) THEN Position ELSE
+                        CASE WHEN Position = 'Jammer' THEN 'Blocker4'
+                             WHEN Position = 'Pivot' THEN 'Jammer'
+                             ELSE Position END
+                    END AS RoleWhenPenalized,
+                    PenaltyType, PenaltyName
+              FROM  PenaltyData;
 
         END
     END

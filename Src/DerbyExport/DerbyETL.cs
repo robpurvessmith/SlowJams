@@ -29,6 +29,13 @@ namespace DerbyExport
         List<ScoreImport> _scores = new List<ScoreImport>();
         List<LineupImport> _lineups = new List<LineupImport>();
         List<PenaltyImport> _penalties = new List<PenaltyImport>();
+        string _homeLeage = string.Empty;
+        string _homeTeam = string.Empty;
+        string _awayLeague = string.Empty;
+        string _awayTeam = string.Empty;
+        double _homeTeamAveragePoints;
+        double _awayTeamAveragePoints;
+        double _medianPoints;
 
         public DerbyETL(string filePath, string dbConnection, bool verboseErrors = false)
         {
@@ -53,11 +60,18 @@ namespace DerbyExport
             dynamic worksheet = null;
 
             try
-            {
+            {            
                 // Extract players
                 worksheet = workbook.Worksheets[PlayerSheet];
                 var range = worksheet.Range["A2:F42"];
 
+                // Get Team Info
+                _homeLeage = worksheet.Cells[2, 9].Value2.ToString();
+                _homeTeam = worksheet.Cells[2, 10].Value2.ToString();
+                _awayLeague = worksheet.Cells[3, 9].Value2.ToString();
+                _awayTeam = worksheet.Cells[3, 10].Value2.ToString();
+
+                // Get Player Info
                 foreach (var row in range.Rows)
                 {
                     var nameRef = row.Cells[6].Value2;
@@ -180,27 +194,29 @@ namespace DerbyExport
                     if (jam != 0 && (jammer ?? string.Empty) != string.Empty)
                     {
                         _lineups.Add(new LineupImport()
-                            {
-                                Blocker1Box = (b1box == "0") ? string.Empty : b1box,
-                                Blocker2Box = (b2box == "0") ? string.Empty : b2box,
-                                Blocker3Box = (b3box == "0") ? string.Empty : b3box,
-                                JammerBox = (jbox == "0") ? string.Empty : jbox,
-                                PivotBox = (pbox == "0") ? string.Empty : pbox,
-                                Blocker1Number = b1,
-                                Blocker2Number = b2,
-                                Blocker3Number = b3,
-                                JammerNumber = jammer,
-                                PivotNumber = pivot,
-                                Blocker1Penalties = b1p,
-                                Blocker2Penalties = b2p,
-                                Blocker3Penalties = b3p,
-                                GameDateTime = _gameDate,
-                                IsHomeTeam = isHomeTeam,
-                                Jam = jam,
-                                PassOccurred = passOccurred,
-                                Period = period,
-                                Team = team
-                            });
+                        {
+                            Blocker1Box = (b1box == "0") ? string.Empty : b1box,
+                            Blocker2Box = (b2box == "0") ? string.Empty : b2box,
+                            Blocker3Box = (b3box == "0") ? string.Empty : b3box,
+                            JammerBox = (jbox == "0") ? string.Empty : jbox,                            
+                            PivotBox = (pbox == "0") ? string.Empty : pbox,                            
+                            Blocker1Number = b1,
+                            Blocker2Number = b2,
+                            Blocker3Number = b3,
+                            JammerNumber = jammer,
+                            PivotNumber = pivot,
+                            JammerPenalties = jp,
+                            PivotPenalties = pp,
+                            Blocker1Penalties = b1p,
+                            Blocker2Penalties = b2p,
+                            Blocker3Penalties = b3p,
+                            GameDateTime = _gameDate,
+                            IsHomeTeam = isHomeTeam,
+                            Jam = jam,
+                            PassOccurred = passOccurred,
+                            Period = period,
+                            Team = team
+                        });
                     }
                 }
 
@@ -252,7 +268,6 @@ namespace DerbyExport
                 ReleaseComObject(excel);
                 excel = null;
             }
-
         }
 
         public void Transform()
@@ -326,6 +341,10 @@ namespace DerbyExport
 
                                     // TODO: Check if this is necessary, since this is a new affiliation
                                     _db.UpdatePlayerAffiliation(player.PlayerId, player.League, player.Number, match.DerbyName, player.DerbyName, _gameDate);
+
+                                    // TODO: Confirm if affiliation is permanent, or just for the current game
+                                    // If temporary, affiliation row is effective/expired for current GameDateTime, with prior affiliation
+                                    // re-activated for future time range.
 
                                     Console.WriteLine();
                                 }
@@ -425,6 +444,8 @@ namespace DerbyExport
                     }
                 }
             }
+            
+            // TODO: Capture input values for _homeTeamAveragePoints, _awayTeamAveragePoints, _medianPoints
         }
 
         public void Load()
@@ -434,7 +455,7 @@ namespace DerbyExport
             _db.LoadPenalties(_penalties);
             _db.LoadScore(_scores);
 
-            _db.CompleteETL();
+            var result = _db.CompleteETL("test", "test", "test", "test", 3.0, 2.0, 4.0, false);
         }
 
         public static void ReleaseComObject(object obj)

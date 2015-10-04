@@ -162,12 +162,29 @@ namespace DerbyExport.DB
             }
         }
 
-        public void CompleteETL()
+        public string CompleteETL(string homeLeague, string homeTeam, string awayLeague, string awayTeam, double homeTeamAveragePoints, double awayTeamAveragePoints, double medianPoints, bool isScrimmage = false)
         {
+            string result = string.Empty;
             using (var db = GetOpenConnection())
             {
-                db.Execute("etl.CompleteETL", commandType: CommandType.StoredProcedure);
+                DynamicParameters parameters = new DynamicParameters(new
+                {
+                    HomeLeague = homeLeague,
+                    HomeTeam = homeTeam,
+                    AwayLeague = awayTeam,
+                    AwayTeam = awayTeam,
+                    HomeTeamAveragePoints = homeTeamAveragePoints,
+                    AwayTeamAveragePoints = awayTeamAveragePoints,
+                    MedianPoints = medianPoints,
+                    IsScrimmage = isScrimmage
+                });
+                parameters.Add("Result", dbType: DbType.String, direction: ParameterDirection.Output, size: 255);
+
+                db.Execute("etl.CompleteETL", parameters, commandType: CommandType.StoredProcedure);
+
+                result = parameters.Get<string>("Result");
             }
+            return result;
         }
 
         private DataTable IGRFTableDefinition()

@@ -209,3 +209,5 @@ Desktop.ini
 node_modules
 *.log
 *.gz
+/app/SlowJamsNode.njsproj
+/SlowJamsNode.sln
