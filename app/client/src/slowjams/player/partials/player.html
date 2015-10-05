@@ -1,0 +1,18 @@
+<h1>{{player.player.playerId}}</h1>
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Team</th>
+            <th>Position</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="jam in player.jams">
+            <td>{{jam.Team}}</td>
+            <td>{{jam.Position}}</td>
+            <td>{{jam.Points}}</td>
+        </tr>
+    </tbody>
+</table>
