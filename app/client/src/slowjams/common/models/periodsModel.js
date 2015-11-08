@@ -1,13 +1,11 @@
 'use strict';
 
-angular.module('SlowJams.Common')
-    .factory('PeriodsModel', ['$http', function ($http) {
+module.exports = function ($http) {
 
-        return {
-            all: function () {
+    return {
+        all: function () {
 
-                return $http.get('/api/v1/periods');
-            }
-        };
-    }]);
-
+            return $http.get('/api/v1/periods');
+        }
+    };
+};

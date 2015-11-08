@@ -1,16 +1,17 @@
 'use strict';
 
-angular.module('SlowJams.Player')
-    .controller('PlayerCtrl', ['data', function (data) {
+var _ = require('lodash');
 
-        var player = this;
+module.exports = function (data) {
 
-        player.player = data.player;
+    var player = this;
 
-        player.games = data.games;
+    player.player = data.player;
 
-        player.jams = _.filter(data.jams, function (jam) {
+    player.games = data.games;
 
-            return jam.PlayerID === player.player.playerId;
-        });
-    }]);
+    player.jams = _.filter(data.jams, function (jam) {
+
+        return jam.PlayerID === player.player.playerId;
+    });
+};

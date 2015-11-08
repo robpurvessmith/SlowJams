@@ -1,11 +1,16 @@
 'use strict';
 
+var angular = require('angular');
+
+// ui.bootstrap
+require('../../../node_modules/angular-bootstrap/ui-bootstrap-tpls.min.js');
+
 var slowJams = angular.module('SlowJams', [
-    'ngRoute',
+    require('angular-route'),
     'ui.bootstrap',
-    'SlowJams.Common',
-    'SlowJams.Bout',
-    'SlowJams.Player'
+    require('./common'),
+    require('./bout'),
+    require('./player')
 ]);
 
 slowJams.config(['$routeProvider', function ($routeProvider) {
@@ -16,10 +21,10 @@ slowJams.config(['$routeProvider', function ($routeProvider) {
             controller: 'BoutsCtrl',
             controllerAs: 'bouts',
             resolve: {
-                data: function (BoutsCtrlDataService) {
+                data: ['BoutsCtrlDataService', function (BoutsCtrlDataService) {
 
                     return BoutsCtrlDataService.getData();
-                }
+                }]
             }
         })
         .when('/players/:playerId', {
@@ -27,12 +32,12 @@ slowJams.config(['$routeProvider', function ($routeProvider) {
             controller: 'PlayerCtrl',
             controllerAs: 'player',
             resolve: {
-                data: function ($route, PlayerCtrlDataService) {
+                data: ['$route', 'PlayerCtrlDataService', function ($route, PlayerCtrlDataService) {
 
                     var playerId = $route.current.params.playerId;
 
                     return PlayerCtrlDataService.getData(playerId);
-                }
+                }]
             }
         })
         .otherwise({
@@ -40,6 +45,12 @@ slowJams.config(['$routeProvider', function ($routeProvider) {
         });
 }]);
 
-$(function () {
+slowJams.controller('MainCtrl', [function () {
+
+    var main = this;
+}]);
+
+angular.element(document).ready(function () {
+
     angular.bootstrap(document, ['SlowJams']);
 });

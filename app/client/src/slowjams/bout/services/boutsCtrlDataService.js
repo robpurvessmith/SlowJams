@@ -1,24 +1,21 @@
 'use strict';
 
-angular.module('SlowJams.Bout')
-    .factory('BoutsCtrlDataService', ['$q', 'BoutsModel',
-        function ($q, BoutsModel) {
+module.exports = function ($q, BoutsModel) {
 
-            return {
-                getData: function(playerId) {
+    return {
+        getData: function (playerId) {
 
-                    return BoutsModel.all()
-                        .then(function (result) {
+            return BoutsModel.all()
+                .then(function (result) {
 
-                            return {
-                                bouts: result.data
-                            };
-                        })
-                        .catch(function (error) {
+                    return {
+                        bouts: result.data
+                    };
+                })
+                .catch(function (error) {
 
-                            // TODO: handle error
-                        });
-                }
-            };
+                    // TODO: handle error
+                });
         }
-    ]);
+    };
+};

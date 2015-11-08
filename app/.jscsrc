@@ -1,0 +1,50 @@
+{
+    // https://github.com/jscs-dev/node-jscs/blob/master/presets/node-style-guide.json
+    "preset": "node-style-guide",
+
+    // -- Preset overrides
+
+    "disallowMultipleVarDecl": {
+        "allExcept": ["undefined"]
+    },
+    "disallowSpacesInFunction": false,
+    // try to keep < 100
+    "maximumLineLength": 150,
+    "requireCapitalizedComments": false,
+    "requireTrailingComma": false,
+    "validateIndentation": 4,
+
+    // -- Custom options
+
+    "disallowMultipleLineBreaks": true,
+    "disallowMultipleLineStrings": true,
+    "disallowMultipleSpaces": {
+        "allowEOLComments": true
+    },
+    "disallowOperatorBeforeLineBreak": ["."],
+    "disallowSpaceBeforeSemicolon": {
+        "allExcept": ["("]
+    },
+    "disallowSpacesInNamedFunctionExpression": {
+        "beforeOpeningRoundBrace": true
+    },
+    "disallowSpacesInsideArrayBrackets": true,
+    "disallowTrailingComma": true,
+    "requireCommaBeforeLineBreak": true,
+    "requireDotNotation": true,
+    "requireLineBreakAfterVariableAssignment": true,
+    "requireLineFeedAtFileEnd": true,
+    "requirePaddingNewLinesAfterUseStrict": true,
+    "requirePaddingNewLinesBeforeLineComments": true,
+    "requireParenthesesAroundIIFE": true,
+    "requireSemicolons": true,
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningRoundBrace": true,
+        "beforeOpeningCurlyBrace": true
+    },
+    "requirePaddingNewlinesInBlocks": {
+        "open": true,
+        "close": false,
+        "allExcept": ["conditionals"]
+    }
+}
