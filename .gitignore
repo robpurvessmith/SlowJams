@@ -207,6 +207,9 @@ Desktop.ini
 
 # npm
 node_modules
+
+dist
+
 *.log
 *.gz
 /app/SlowJamsNode.njsproj
