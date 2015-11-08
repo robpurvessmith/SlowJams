@@ -1,0 +1,21 @@
+// http://jshint.com/docs/options/
+
+{
+  // -- Enforcing options
+
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "globals": {},
+  "nocomma": true,
+  "nonew": true,
+  "node": true,
+  "quotmark": "single",
+  "strict": true,
+  "undef": true,
+  "unused": "vars",
+
+  // -- Environments
+
+  "browserify": true
+}
