@@ -1,12 +1,11 @@
 'use strict';
 
-angular.module('SlowJams.Common')
-    .factory('JamsModel', ['$http', function ($http) {
+module.exports = function ($http) {
 
-        return {
-            all: function () {
+    return {
+        all: function () {
 
-                return $http.get('/api/v1/jams');
-            }
-        };
-    }]);
+            return $http.get('/api/v1/jams');
+        }
+    };
+};

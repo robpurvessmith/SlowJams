@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('SlowJams.Bout')
-    .controller('BoutsCtrl', ['data', function (data) {
+module.exports = function (data) {
 
-        var bouts = this;
+    var bouts = this;
 
-        bouts.bouts = data.bouts;
-
-    }]);
+    bouts.bouts = data.bouts;
+};
