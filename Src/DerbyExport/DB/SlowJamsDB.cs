@@ -187,6 +187,14 @@ namespace DerbyExport.DB
             return result;
         }
 
+        public void ClearCompletedStagingData()
+        {
+            using (var db = GetOpenConnection())
+            {
+                db.Execute("etl.ClearCompletedStagingData", commandType: CommandType.StoredProcedure);
+            }
+        }
+
         private DataTable IGRFTableDefinition()
         {
             var t = new DataTable();

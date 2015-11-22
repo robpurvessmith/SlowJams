@@ -237,7 +237,18 @@ BEGIN
 
         END
     END
-    /*
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[etl].[ClearCompletedStagingData]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [etl].[ClearCompletedStagingData] AS' 
+END
+GO
+
+ALTER PROCEDURE [etl].[ClearCompletedStagingData]
+AS
+BEGIN
     IF (EXISTS (SELECT * FROM dbo.Game g INNER JOIN etl.IGRF i ON i.GameDateTime = g.GameDateTime))
     BEGIN
         TRUNCATE TABLE etl.IGRF;
@@ -245,6 +256,5 @@ BEGIN
         TRUNCATE TABLE etl.Penalties;
         TRUNCATE TABLE etl.Score;
     END
-    */
-END
+END;
 GO
