@@ -1,0 +1,105 @@
+GameId,Period,Jam,Team,PlayerId,PenaltyId,RoleWhenPenalized,PenaltyType,PenaltyName
+1004,1,2,Charter Team,19,1,Blocker3,C,Dir of Play
+1004,1,4,Charter Team,22,1,Pivot,F,Forearms
+1004,1,4,Thunder,7,1,Blocker1,F,Forearms
+1004,1,5,Thunder,2,1,Pivot,P,Out of Play
+1004,1,5,Thunder,7,2,Blocker1,G,Misconduct
+1004,1,5,Thunder,8,1,Jammer,X,Cut Track
+1004,1,5,Thunder,11,1,Blocker2,L,Low Block
+1004,1,6,Charter Team,21,1,Jammer,G,Misconduct
+1004,1,6,Thunder,8,2,Jammer,B,Back Block
+1004,1,8,Thunder,3,1,Blocker2,F,Forearms
+1004,1,9,Charter Team,18,1,Jammer,B,Back Block
+1004,1,10,Charter Team,16,1,Blocker1,p,Out of Play
+1004,1,12,Charter Team,22,2,Blocker3,X,Cut Track
+1004,1,13,Thunder,12,1,Jammer,B,Back Block
+1004,1,14,Charter Team,19,2,Blocker2,P,Out of Play
+1004,1,14,Thunder,12,2,Jammer,B,Back Block
+1004,1,15,Charter Team,22,3,Blocker1,F,Forearms
+1004,1,16,Charter Team,25,1,Jammer,B,Back Block
+1004,1,16,Thunder,7,3,Blocker1,F,Forearms
+1004,1,16,Thunder,8,3,Jammer,B,Back Block
+1004,1,16,Thunder,8,4,Jammer,B,Back Block
+1004,1,17,Charter Team,27,1,Blocker3,F,Forearms
+1004,1,18,Thunder,5,1,Pivot,P,Out of Play
+1004,2,1,Charter Team,15,1,Pivot,C,Dir of Play
+1004,2,1,Thunder,12,3,Jammer,B,Back Block
+1004,2,1,Thunder,12,4,Jammer,I,Illegal Proc
+1004,2,1,Thunder,12,5,Jammer,A,High Block
+1004,2,2,Thunder,1,1,Blocker2,C,Dir of Play
+1004,2,2,Thunder,6,1,Jammer,X,Cut Track
+1004,2,2,Thunder,7,4,Blocker3,B,Back Block
+1004,2,2,Thunder,12,6,Blocker1,F,Forearms
+1004,2,4,Charter Team,27,2,Blocker2,F,Forearms
+1004,2,4,Thunder,4,1,Blocker1,M,Multi-Player
+1004,2,6,Thunder,2,2,Jammer,F,Forearms
+1004,2,8,Charter Team,27,3,Blocker3,F,Forearms
+1004,2,8,Thunder,9,1,Blocker2,P,Out of Play
+1004,2,8,Thunder,28,1,Blocker1,F,Forearms
+1004,2,9,Thunder,6,2,Jammer,X,Cut Track
+1004,2,10,Charter Team,23,1,Blocker1,P,Out of Play
+1004,2,10,Charter Team,27,4,Blocker3,P,Out of Play
+1004,2,13,Thunder,8,5,Jammer,L,Low Block
+1004,2,13,Thunder,8,6,Jammer,B,Back Block
+1004,2,14,Charter Team,16,2,Blocker1,F,Forearms
+1004,2,14,Charter Team,27,5,Blocker3,L,Low Block
+1004,2,14,Thunder,2,3,Blocker1,A,High Block
+1004,2,15,Thunder,13,1,Blocker3,M,Multi-Player
+1004,2,16,Charter Team,17,1,Blocker3,C,Dir of Play
+1004,2,16,Charter Team,19,3,Blocker2,X,Cut Track
+1004,2,17,Charter Team,22,4,Blocker1,X,Cut Track
+1004,2,17,Charter Team,22,5,Blocker1,C,Dir of Play
+1004,2,17,Thunder,2,4,Blocker2,C,Dir of Play
+1004,2,17,Thunder,7,5,Blocker3,C,Dir of Play
+1004,2,17,Thunder,11,2,Blocker1,L,Low Block
+1005,1,1,Harlots,30,1,Jammer,B,Back Block
+1005,1,1,Plan B,48,1,Jammer,X,Cut Track
+1005,1,2,Harlots,38,1,Blocker2,M,Multi-Player
+1005,1,2,Harlots,39,1,Jammer,X,Cut Track
+1005,1,2,Plan B,51,1,Blocker3,P,Out of Play
+1005,1,3,Plan B,52,1,Blocker3,P,Out of Play
+1005,1,5,Plan B,45,1,Blocker3,P,Out of Play
+1005,1,7,Harlots,34,1,Blocker3,P,Out of Play
+1005,1,8,Plan B,13,1,Pivot,C,Dir of Play
+1005,1,8,Plan B,43,1,Blocker2,X,Cut Track
+1005,1,8,Plan B,53,1,Jammer,B,Back Block
+1005,1,9,Harlots,30,2,Jammer,X,Cut Track
+1005,1,9,Plan B,46,1,Blocker2,M,Multi-Player
+1005,1,11,Harlots,34,2,Blocker2,E,Elbows
+1005,1,12,Plan B,51,2,Blocker3,L,Low Block
+1005,1,13,Harlots,37,1,Jammer,X,Cut Track
+1005,1,14,Harlots,29,1,Blocker1,X,Cut Track
+1005,1,15,Plan B,28,1,Pivot,P,Out of Play
+1005,1,15,Plan B,52,2,Blocker1,P,Out of Play
+1005,1,18,Plan B,13,2,Pivot,C,Dir of Play
+1005,2,2,Harlots,31,1,Blocker2,C,Dir of Play
+1005,2,3,Plan B,45,2,Blocker3,X,Cut Track
+1005,2,3,Plan B,52,3,Blocker1,L,Low Block
+1005,2,3,Plan B,53,2,Jammer,F,Forearms
+1005,2,4,Harlots,38,2,Pivot,C,Dir of Play
+1005,2,4,Plan B,47,1,Blocker1,O,OOB Block
+1005,2,5,Plan B,46,2,Blocker1,C,Dir of Play
+1005,2,5,Plan B,52,4,Blocker3,L,Low Block
+1005,2,6,Harlots,33,1,Jammer,X,Cut Track
+1005,2,6,Harlots,39,2,Blocker4,B,Back Block
+1005,2,8,Plan B,13,3,Jammer,F,Forearms
+1005,2,10,Harlots,38,3,Pivot,C,Dir of Play
+1005,2,11,Harlots,34,3,Blocker3,C,Dir of Play
+1005,2,11,Plan B,46,3,Blocker1,M,Multi-Player
+1005,2,11,Plan B,48,2,Jammer,B,Back Block
+1005,2,11,Plan B,48,3,Jammer,X,Cut Track
+1005,2,12,Harlots,37,2,Pivot,F,Forearms
+1005,2,12,Plan B,13,4,Pivot,F,Forearms
+1005,2,12,Plan B,43,2,Blocker3,M,Multi-Player
+1005,2,12,Plan B,49,1,Blocker2,P,Out of Play
+1005,2,12,Plan B,51,3,Blocker1,P,Out of Play
+1005,2,13,Harlots,36,1,Blocker4,P,Out of Play
+1005,2,13,Plan B,28,2,Pivot,F,Forearms
+1005,2,13,Plan B,44,1,Jammer,B,Back Block
+1005,2,15,Harlots,35,1,Jammer,X,Cut Track
+1005,2,15,Harlots,41,1,Blocker2,P,Out of Play
+1005,2,17,Harlots,42,1,Jammer,X,Cut Track
+1005,2,17,Plan B,49,2,Blocker2,P,Out of Play
+1005,2,18,Harlots,38,4,Pivot,C,Dir of Play
+1005,2,18,Harlots,42,2,Jammer,X,Cut Track
+1005,2,18,Plan B,52,5,Blocker3,P,Out of Play
