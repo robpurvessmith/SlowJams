@@ -7,6 +7,7 @@
     "postinstall": "gulp build"
   },
   "dependencies": {
+    "ag-grid": "^2.3.5",
     "angular": "^1.4.7",
     "angular-bootstrap": "^0.12.2",
     "angular-route": "^1.4.7",
@@ -27,7 +28,6 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
-    "ag-grid": "^2.3.5",
     "browser-sync": "^2.9.10",
     "gulp-jscs": "^3.0.1",
     "gulp-jscs-stylish": "^1.2.1",
