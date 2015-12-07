@@ -6,8 +6,8 @@ var common = angular.module('SlowJams.Common', []);
 
 // -- Models
 
-common.factory('BoutsModel', ['$http', require('./models/boutsModel')]);
-common.factory('JamsModel', ['$http', require('./models/jamsModel')]);
-common.factory('PeriodsModel', ['$http', require('./models/periodsModel')]);
+common.factory('PlayerModel', ['$http', require('./models/player')]);
+
+common.factory('GameModel', ['$http', require('./models/game')]);
 
 module.exports = common.name;

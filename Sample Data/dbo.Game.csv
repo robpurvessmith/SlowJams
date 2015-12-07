@@ -1,0 +1,3 @@
+GameId,GameDateTime,LeagueHome,TeamHome,LeagueAway,TeamAway,TeamHomeAvgPoints,TeamAwayAvgPoints,MedianPoints,IsScrimmage
+1004,3/14/15 5:00,test,test,test,test,3,2,4,FALSE
+1005,4/11/15 8:00,test,test,test,test,3,2,4,FALSE

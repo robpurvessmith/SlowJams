@@ -1,21 +1,11 @@
 'use strict';
 
-module.exports = function ($q, BoutsModel) {
+module.exports = function ($q) {
 
     return {
-        getData: function (playerId) {
+        getData: function () {
 
-            return BoutsModel.all()
-                .then(function (result) {
-
-                    return {
-                        bouts: result.data
-                    };
-                })
-                .catch(function (error) {
-
-                    // TODO: handle error
-                });
+            return {};
         }
     };
 };

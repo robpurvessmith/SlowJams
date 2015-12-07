@@ -4,10 +4,14 @@ var express = require('express');
 var router = express.Router();
 var ApiController = require('../controllers/api');
 
-router.get('/bouts', ApiController.bouts);
+router.get('/players/:playerId', ApiController.player.get);
 
-router.get('/jams', ApiController.jams);
+router.get('/players/:playerId/gamePlayers', ApiController.player.getGamePlayers);
 
-router.get('/periods', ApiController.periods);
+router.get('/players/:playerId/gameJamPositions', ApiController.player.getGameJamPositions);
+
+router.get('/players/:playerId/gameJamScores', ApiController.player.getGameJamScores);
+
+router.get('/games/:gameId/gameJamScores', ApiController.game.getGameJamScores);
 
 module.exports = router;

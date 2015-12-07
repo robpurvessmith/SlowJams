@@ -456,6 +456,8 @@ namespace DerbyExport
             _db.LoadScore(_scores);
 
             var result = _db.CompleteETL("test", "test", "test", "test", 3.0, 2.0, 4.0, false);
+
+            _db.ClearCompletedStagingData();
         }
 
         public static void ReleaseComObject(object obj)

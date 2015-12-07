@@ -1,0 +1,26 @@
+[
+    {
+        "GameId": "1004",
+        "GameDateTime": "3/14/15 5:00",
+        "LeagueHome": "test",
+        "TeamHome": "test",
+        "LeagueAway": "test",
+        "TeamAway": "test",
+        "TeamHomeAvgPoints": "3",
+        "TeamAwayAvgPoints": "2",
+        "MedianPoints": "4",
+        "IsScrimmage": "FALSE"
+    },
+    {
+        "GameId": "1005",
+        "GameDateTime": "4/11/15 8:00",
+        "LeagueHome": "test",
+        "TeamHome": "test",
+        "LeagueAway": "test",
+        "TeamAway": "test",
+        "TeamHomeAvgPoints": "3",
+        "TeamAwayAvgPoints": "2",
+        "MedianPoints": "4",
+        "IsScrimmage": "FALSE"
+    }
+]

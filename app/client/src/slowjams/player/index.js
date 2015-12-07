@@ -13,7 +13,7 @@ player.controller('PlayerCtrl', ['data', require('./controllers/playerController
 // -- Services
 
 player.factory('PlayerCtrlDataService', [
-    '$q', 'BoutsModel', 'JamsModel', require('./services/playerCtrlDataService')
+    '$q', 'PlayerModel', 'GameModel', require('./services/playerCtrlDataService')
 ]);
 
 module.exports = player.name;
