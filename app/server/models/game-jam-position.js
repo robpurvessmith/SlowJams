@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 exports.getAll = function () {
 
-    return require('../../../Sample\ Data/dbo.GameJamPosition.json');
+    return require('../test-data/dbo.GameJamPosition.json');
 };
 
 exports.getForPlayer = function (playerId) {

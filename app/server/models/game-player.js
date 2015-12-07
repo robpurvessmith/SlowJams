@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 exports.getAll = function () {
 
-    return require('../../../Sample\ Data/dbo.GamePlayer.json');
+    return require('../test-data/dbo.GamePlayer.json');
 };
 
 exports.getForPlayer = function (playerId) {

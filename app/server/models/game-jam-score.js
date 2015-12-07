@@ -6,7 +6,7 @@ var GameJamPosition = require('./game-jam-position');
 
 exports.getAll = function () {
 
-    return require('../../../Sample\ Data/dbo.GameJamScore.json');
+    return require('../test-data/dbo.GameJamScore.json');
 };
 
 exports.getForPlayer = function (playerId) {

@@ -1,0 +1,426 @@
+[
+    {
+        "PlayerId": "1",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Stacie Jones",
+        "Number": "101",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "2",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Fox Hadley",
+        "Number": "1013",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "3",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Rain Blows Brite",
+        "Number": "13",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "4",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Kristy Skelton",
+        "Number": "1321",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "5",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "AnneX",
+        "Number": "14",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "6",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "The Honey Badger",
+        "Number": "18",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "7",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Aggrosaurus",
+        "Number": "2042",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "8",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Crazy Squirrel",
+        "Number": "231",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "9",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Anne Tastic",
+        "Number": "24",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "10",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Pity Affoo",
+        "Number": "711",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "11",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Fraxxure",
+        "Number": "911",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "12",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Wylde Leigh Coyote",
+        "Number": "9TNT",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "13",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Commander Will Wrecker",
+        "Number": "NO1",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "14",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Paige Bleed",
+        "Number": "0125",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "15",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Lora \"OutaMy\" Wayman",
+        "Number": "10",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "16",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Amy Spears",
+        "Number": "1098",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "17",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Jesse \"Ava Tarr\" Fox",
+        "Number": "1101",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "18",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Kitty Liquorbottom",
+        "Number": "12",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "19",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Texas Chainsaw Sasskicker",
+        "Number": "19",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "20",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Val Holla",
+        "Number": "2",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "21",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "The Smacktivist",
+        "Number": "365",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "22",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Burnadeath",
+        "Number": "451",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "23",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "HellionBOI",
+        "Number": "5459",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "24",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "BiggRigg",
+        "Number": "815",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "25",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "KloverKill",
+        "Number": "99",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "26",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "TactiGal",
+        "Number": "C4",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "27",
+        "League": "Ohio Roller Girls",
+        "DerbyName": "Ena Flash",
+        "Number": "ICU2",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "28",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Andi Slamberg",
+        "Number": "0",
+        "EffectiveDate": "3/14/15 5:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "29",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Typhoid Maggie",
+        "Number": "11",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "30",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Fista Krusher",
+        "Number": "11G6",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "31",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Hitty Pryde",
+        "Number": "152",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "32",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "GuilloTina",
+        "Number": "237 ",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "33",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Bam Bam Bigelow",
+        "Number": "26",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "34",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Va Va BOOM",
+        "Number": "2611",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "35",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Miss Carriage",
+        "Number": "45",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "36",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "fErinheit",
+        "Number": "451",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "37",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Bean Stalker",
+        "Number": "511",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "38",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Smashin' Good Time",
+        "Number": "519",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "39",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Natty B",
+        "Number": "58",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "40",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Heaven Lee Bash",
+        "Number": "932",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "41",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Lethal Mermaid",
+        "Number": "H20",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "42",
+        "League": "Hammer City Roller Girls",
+        "DerbyName": "Scooby Doom",
+        "Number": "K9",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "43",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Justine Sane",
+        "Number": "17",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "44",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Lippy Wrongstockings",
+        "Number": "19",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "45",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Zooks",
+        "Number": "20",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "46",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Violent NoRegard",
+        "Number": "303",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "47",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Suzy Slam",
+        "Number": "33",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "48",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Psykosonic",
+        "Number": "4",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "49",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Meg N' Plead",
+        "Number": "42",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "50",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Brunt Force Bunny",
+        "Number": "44",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "51",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Slaughterhouse Streeter",
+        "Number": "480",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "52",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "Cannonball Doll",
+        "Number": "64",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    },
+    {
+        "PlayerId": "53",
+        "League": "Tri-City Roller Derby",
+        "DerbyName": "MEGAnTRON",
+        "Number": "84",
+        "EffectiveDate": "4/11/15 8:00",
+        "ExpiryDate": "1/1/00 0:00"
+    }
+]
