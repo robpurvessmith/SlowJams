@@ -5,9 +5,13 @@ var angular = require('angular');
 // ui.bootstrap
 require('../../../node_modules/angular-bootstrap/ui-bootstrap-tpls.min.js');
 
+// ag-grid
+require('../../../node_modules/ag-grid/dist/ag-grid.min.js');
+
 var slowJams = angular.module('SlowJams', [
     require('angular-route'),
     'ui.bootstrap',
+    'agGrid',
     require('./common'),
     require('./bout'),
     require('./player')
