@@ -13,7 +13,7 @@ bout.controller('BoutsCtrl', ['data', require('./controllers/boutsController')])
 // -- Services
 
 bout.factory('BoutsCtrlDataService', [
-    '$q', 'BoutsModel', require('./services/boutsCtrlDataService')
+    '$q', require('./services/boutsCtrlDataService')
 ]);
 
 module.exports = bout.name;

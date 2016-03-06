@@ -1,24 +1,49 @@
 'use strict';
 
-module.exports = function ($q, BoutsModel, JamsModel) {
+var _ = require('lodash');
+
+module.exports = function ($q, PlayerModel, GameModel) {
 
     return {
         getData: function (playerId) {
 
-            var boutsPromise = BoutsModel.all();
-            var jamsPromise = JamsModel.all();
+            var playerPromise = PlayerModel.get(playerId);
+            var gamePlayersPromise = PlayerModel.getGamePlayers(playerId);
+            var gameJamPositionsPromise = PlayerModel.getGameJamPositions(playerId);
+            var gameJamScoresPromise = PlayerModel.getGameJamScores(playerId);
 
-            return $q.all([boutsPromise, jamsPromise])
+            return $q.all([
+                playerPromise,
+                gamePlayersPromise,
+                gameJamPositionsPromise,
+                gameJamScoresPromise
+            ])
                 .then(function (results) {
 
-                    return {
-                        player: {
-                            playerId: playerId,
-                            name: 'foo bar baz'
-                        },
-                        bouts: results[0].data,
-                        jams: results[1].data
-                    };
+                    var player = results[0].data;
+                    var gamePlayers = results[1].data;
+                    var gameJamPositions = results[2].data;
+                    var gameJamScoresForPlayer = results[3].data;
+
+                    // TODO: use query params to do this in 1 query
+                    return $q.all(_.map(gamePlayers, function (gamePlayer) {
+
+                        return GameModel.getGameJamScores(gamePlayer.GameId);
+                    }))
+                        .then(function (results) {
+
+                            return {
+                                player: player,
+                                gamePlayers: gamePlayers,
+                                gameJamPositions: gameJamPositions,
+                                gameJamScoresForPlayer: gameJamScoresForPlayer,
+                                gameJamScores: _.map(results, 'data')
+                            };
+                        })
+                        .catch(function (error) {
+
+                            // TODO: handle error
+                        });
                 })
                 .catch(function (error) {
 

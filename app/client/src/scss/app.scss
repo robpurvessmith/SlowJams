@@ -1,0 +1,26 @@
+// -- Normalize.css
+
+@import 'normalize.css/normalize';
+
+// -- Foundation Sites
+
+@import 'settings';
+@import 'foundation-sites/scss/foundation';
+
+// -- Font Awesome
+
+/* Override the font awesome font path since it is relative to our compiled CSS directory. The
+ * assignment of $fa-font-path in /node_modules/font-awesome/scss/_variables.scss uses the !default
+ * flag, so it won't be re-assigned to since we are assinging it here. */
+$fa-font-path: 'font-awesome/fonts';
+
+@import 'font-awesome/scss/font-awesome';
+
+// -- ag-Grid
+
+@import 'ag-grid/dist/styles/ag-grid';
+@import 'ag-grid/dist/styles/theme-fresh';
+
+// -- App
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

@@ -2,39 +2,78 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var cssnano = require('gulp-cssnano');
 var browserify = require('browserify');
+var uglify = require('gulp-uglify');
+var plumber = require('gulp-plumber');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var _ = require('lodash');
 
-gulp.task('build', function () {
+// build css for production
+gulp.task('css', function () {
+
+    return gulp.src('client/src/scss/**/*.scss')
+        .pipe(plumber(function (err) {
+
+            gutil.log(err.message);
+            gutil.beep();
+            this.emit('end');
+        }))
+        .pipe(sass({
+            includePaths: ['node_modules']
+        }))
+        // include sourcemaps
+        .pipe(sourcemaps.init({
+            loadMaps: true
+        }))
+        // minify css with cssnano
+        .pipe(cssnano())
+        // writes .map file
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('client/dist/css'));
+});
+
+// build js for production
+gulp.task('js', function () {
 
     // add custom browserify options here
     var b = browserify({
-        entries: ['client/src/slowjams/app.js']
+        entries: ['client/src/slowjams/app.js'],
+        debug: true
     });
 
-    return b.bundle()
-        // log errors if they happen
-        .on('error', function (err) {
+    return plumber(function (err) {
 
-            gutil.log(err.message);
-            this.emit('end');
-        })
+        gutil.log(err.message);
+        gutil.beep();
+        this.emit('end');
+    })
+        .pipe(b.bundle())
+        // filename parameter is a "pretend" filename that determines the final filename
         .pipe(source('bundle.js'))
-        // optional, remove if you don't need to buffer file contents
+        // buffer file contents
         .pipe(buffer())
-        // Add transformation tasks to the pipeline here.
+        // include sourcemaps
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        // minify files with UglifyJS
+        .pipe(uglify())
+        // writes .map file
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('client/dist/js'));
 });
+
+// called on postinstall
+gulp.task('build', ['css', 'js']);
+
 
 // dev dependencies
 if (process.env.NODE_ENV !== 'production') {
 
     var browserSync = require('browser-sync').create();
     var watchify = require('watchify');
-    var sourcemaps = require('gulp-sourcemaps');
     var jshint = require('gulp-jshint');
     var jscs = require('gulp-jscs');
     var stylish = require('gulp-jscs-stylish');
@@ -51,8 +90,17 @@ if (process.env.NODE_ENV !== 'production') {
     gulp.task('sass', function () {
 
         return gulp.src('client/src/scss/**/*.scss')
-            .pipe(sass())
-            .pipe(gulp.dest('client/src/css'))
+            .pipe(plumber(function (err) {
+
+                gutil.log(err.message);
+                gutil.beep();
+                browserSync.notify('Browserify Error!');
+                this.emit('end');
+            }))
+            .pipe(sass({
+                includePaths: ['node_modules']
+            }))
+            .pipe(gulp.dest('client/dist/css'))
             .pipe(browserSync.stream());
     });
 
@@ -72,14 +120,15 @@ if (process.env.NODE_ENV !== 'production') {
 
         gutil.log('Compiling JS...');
 
-        return w.bundle()
-            // log errors if they happen
-            .on('error', function (err) {
+        return plumber(function (err) {
 
-                gutil.log(err.message);
-                browserSync.notify('Browserify Error!');
-                this.emit('end');
-            })
+            gutil.log(err.message);
+            gutil.beep();
+            browserSync.notify('Browserify Error!');
+            this.emit('end');
+        })
+            .pipe(w.bundle())
+            // filename parameter is a "pretend" filename that determines the final filename
             .pipe(source('bundle.js'))
             // optional, remove if you don't need to buffer file contents
             .pipe(buffer())
@@ -91,9 +140,11 @@ if (process.env.NODE_ENV !== 'production') {
             .pipe(browserSync.stream({ once: true }));
     }
 
-    gulp.task('bundle', bundle);
     w.on('update', bundle);  // on any dep update, runs the bundler
+
     w.on('log', gutil.log);  // output build logs to terminal
+
+    gulp.task('bundle', bundle);
 
     gulp.task('watch', ['browserSync', 'sass', 'bundle'], function () {
 
@@ -109,6 +160,12 @@ if (process.env.NODE_ENV !== 'production') {
     gulp.task('lint', function () {
 
       return gulp.src('client/src/**/*.js')
+        .pipe(plumber(function (err) {
+
+            gutil.log(err.message);
+            gutil.beep();
+            this.emit('end');
+        }))
         .pipe(jshint())
         .pipe(jscs())
         .pipe(stylish.combineWithHintResults())

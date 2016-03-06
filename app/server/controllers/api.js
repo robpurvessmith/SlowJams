@@ -2,23 +2,53 @@
 
 var _ = require('lodash');
 
-exports.bouts = function(req, res, next) {
+var Player = require('../models/player');
+var GamePlayer = require('../models/game-player');
+var GameJamPosition = require('../models/game-jam-position');
+var GameJamScore = require('../models/game-jam-score');
 
-    var bouts = require('../models/bouts.json');
+exports.player = {
+    get: function (req, res, next) {
 
-    res.send(bouts);
-}
+        var playerId = req.params.playerId;
 
-exports.periods = function (req, res, next) {
+        var player = Player.get(playerId);
 
-    var periods = require('../models/periods.json');
+        res.send(player);
+    },
+    getGamePlayers: function (req, res, next) {
 
-    res.send(periods);
-}
+        var playerId = req.params.playerId;
 
-exports.jams = function (req, res, next) {
+        var gamePlayersForPlayer = GamePlayer.getForPlayer(playerId);
 
-    var jams = require('../models/jams.json');
+        res.send(gamePlayersForPlayer);
+    },
+    getGameJamPositions: function (req, res, next) {
 
-    res.send(jams);
+        var playerId = req.params.playerId;
+
+        var gameJamPositionsForPlayer = GameJamPosition.getForPlayer(playerId);
+
+        res.send(gameJamPositionsForPlayer);
+    },
+    getGameJamScores: function (req, res, next) {
+
+        var playerId = req.params.playerId;
+
+        var gameJamScoresForPlayer = GameJamScore.getForPlayer(playerId);
+
+        res.send(gameJamScoresForPlayer);
+    }
+};
+
+exports.game = {
+    getGameJamScores: function (req, res, next) {
+
+        var gameId = req.params.gameId;
+
+        var gameJamScoresForGame = GameJamScore.getForGame(gameId);
+
+        res.send(gameJamScoresForGame);
+    }
 }

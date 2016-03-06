@@ -1,18 +1,7 @@
-<h1>{{player.player.playerId}}</h1>
-<br>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Team</th>
-            <th>Position</th>
-            <th>Points</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="jam in player.jams">
-            <td>{{jam.Team}}</td>
-            <td>{{jam.Position}}</td>
-            <td>{{jam.Points}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="small-12 columns">
+        <h1>{{player.player.DerbyName}}</h1>
+        <br>
+        <div ag-grid="player.gridOptions" class="ag-fresh" style="height:500px;"></div>
+    </div>
+</div>
