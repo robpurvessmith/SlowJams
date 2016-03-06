@@ -12,7 +12,7 @@ module.exports = function (data) {
 
     var gameJamScoresForPlayerGrouped = _.groupBy(data.gameJamScoresForPlayer, 'GameId');
 
-    var gameJamScoresGrouped = _.indexBy(data.gameJamScores, function (gameJamScoresForGame) {
+    var gameJamScoresGrouped = _.keyBy(data.gameJamScores, function (gameJamScoresForGame) {
 
         return gameJamScoresForGame[0].GameId;
     });
@@ -59,7 +59,7 @@ module.exports = function (data) {
 
         // -- Events
 
-        onReady: function (e) {
+        onGridReady: function (e) {
 
             initTable();
         }
@@ -95,7 +95,7 @@ module.exports = function (data) {
                     })
                     .map(function (gameJamScoresForPartition) {
 
-                        return _.sum(gameJamScoresForPartition, function (gameJamScore) {
+                        return _.sumBy(gameJamScoresForPartition, function (gameJamScore) {
 
                             return parseInt(gameJamScore.Points, 10);
                         });
@@ -112,7 +112,7 @@ module.exports = function (data) {
             var numPlayerJams = _.has(gameJamPositionsGrouped, gameId) ?
 
                 // it is possible for a player to have multiple positions in a single jam
-                _.uniq(gameJamPositionsGrouped[gameId], function (gameJamPosition) {
+                _.uniqBy(gameJamPositionsGrouped[gameId], function (gameJamPosition) {
 
                     // property order is non-deterministic in objects, so this may fail
                     return JSON.stringify(_.pick(gameJamPosition, ['GameId', 'Period', 'Jam']));
@@ -121,7 +121,7 @@ module.exports = function (data) {
 
             var numGameJams = _.has(gameJamScoresGrouped, gameId) ?
 
-                _.uniq(gameJamScoresGrouped[gameId], function (gameJamScore) {
+                _.uniqBy(gameJamScoresGrouped[gameId], function (gameJamScore) {
 
                     // property order is non-deterministic in objects, so this may fail
                     return JSON.stringify(_.pick(gameJamScore, ['GameId', 'Period', 'Jam']));
@@ -139,7 +139,7 @@ module.exports = function (data) {
                     })
                     .map(function (gameJamScoresForPartition) {
 
-                        return _.sum(gameJamScoresForPartition, function (gameJamScore) {
+                        return _.sumBy(gameJamScoresForPartition, function (gameJamScore) {
 
                             return parseInt(gameJamScore.Points, 10);
                         });
