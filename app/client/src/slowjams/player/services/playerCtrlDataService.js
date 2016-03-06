@@ -37,7 +37,7 @@ module.exports = function ($q, PlayerModel, GameModel) {
                                 gamePlayers: gamePlayers,
                                 gameJamPositions: gameJamPositions,
                                 gameJamScoresForPlayer: gameJamScoresForPlayer,
-                                gameJamScores: _.pluck(results, 'data')
+                                gameJamScores: _.map(results, 'data')
                             };
                         })
                         .catch(function (error) {

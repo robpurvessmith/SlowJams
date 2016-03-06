@@ -1,16 +1,15 @@
 'use strict';
 
 var angular = require('angular');
+require('angular-foundation');
+var agGrid = require('ag-grid');
 
-// ui.bootstrap
-require('../../../node_modules/angular-bootstrap/ui-bootstrap-tpls.min.js');
-
-// ag-grid
-require('../../../node_modules/ag-grid/dist/ag-grid.min.js');
+// get ag-Grid to create an Angular module and register the ag-Grid directive
+agGrid.initialiseAgGridWithAngular1(angular);
 
 var slowJams = angular.module('SlowJams', [
     require('angular-route'),
-    'ui.bootstrap',
+    'mm.foundation',
     'agGrid',
     require('./common'),
     require('./bout'),

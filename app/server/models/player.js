@@ -9,7 +9,7 @@ exports.getAll = function () {
 
 exports.get = function (playerId) {
 
-    var allPlayers = _.indexBy(this.getAll(), 'PlayerId');
+    var allPlayers = _.keyBy(this.getAll(), 'PlayerId');
 
     return _.get(allPlayers, playerId, null);
 }
