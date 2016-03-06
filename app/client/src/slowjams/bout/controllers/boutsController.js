@@ -2,6 +2,6 @@
 
 module.exports = function (data) {
 
-    var bouts = this;
+    var boutsCtrl = this;
 
 };

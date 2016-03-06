@@ -22,7 +22,7 @@ slowJams.config(['$routeProvider', function ($routeProvider) {
         .when('/bouts', {
             templateUrl: 'src/slowjams/bout/partials/bouts.html',
             controller: 'BoutsCtrl',
-            controllerAs: 'bouts',
+            controllerAs: 'boutsCtrl',
             resolve: {
                 data: ['BoutsCtrlDataService', function (BoutsCtrlDataService) {
 
@@ -33,7 +33,7 @@ slowJams.config(['$routeProvider', function ($routeProvider) {
         .when('/players/:playerId', {
             templateUrl: 'src/slowjams/player/partials/player.html',
             controller: 'PlayerCtrl',
-            controllerAs: 'player',
+            controllerAs: 'playerCtrl',
             resolve: {
                 data: ['$route', 'PlayerCtrlDataService', function ($route, PlayerCtrlDataService) {
 

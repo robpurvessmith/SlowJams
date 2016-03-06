@@ -4,17 +4,17 @@ var _ = require('lodash');
 
 module.exports = function (data) {
 
-    var player = this;
+    var playerCtrl = this;
 
     // -- Private data
 
-    var gameJamPositionsGrouped = _.groupBy(data.gameJamPositions, 'GameId');
+    var gameJamPositionsGrouped = _.groupBy(data.gameJamPositions, 'game_id');
 
-    var gameJamScoresForPlayerGrouped = _.groupBy(data.gameJamScoresForPlayer, 'GameId');
+    var gameJamScoresForPlayerGrouped = _.groupBy(data.gameJamScoresForPlayer, 'game_id');
 
     var gameJamScoresGrouped = _.keyBy(data.gameJamScores, function (gameJamScoresForGame) {
 
-        return gameJamScoresForGame[0].GameId;
+        return gameJamScoresForGame[0].game_id;
     });
 
     var columnDefs = [
@@ -69,12 +69,11 @@ module.exports = function (data) {
 
     // -- Private functions
 
-
     // Public API
 
-    player.player = data.player;
+    playerCtrl.player = data.player;
 
-    player.gridOptions = gridOptions;
+    playerCtrl.gridOptions = gridOptions;
 
     // -- Init
 
@@ -82,22 +81,22 @@ module.exports = function (data) {
 
         _.forEach(data.gamePlayers, function (gamePlayer) {
 
-            var gameId = gamePlayer.GameId;
+            var gameId = gamePlayer.game_id;
 
-            var team = gamePlayer.Team;
+            var team = gamePlayer.team;
 
             var playerPlusMinusPartitioned = _.has(gameJamScoresForPlayerGrouped, gameId) ?
 
                 _(gameJamScoresForPlayerGrouped[gameId])
                     .partition(function (gameJamScore) {
 
-                        return gameJamScore.Team === team;
+                        return gameJamScore.team === team;
                     })
                     .map(function (gameJamScoresForPartition) {
 
                         return _.sumBy(gameJamScoresForPartition, function (gameJamScore) {
 
-                            return parseInt(gameJamScore.Points, 10);
+                            return parseInt(gameJamScore.points, 10);
                         });
                     })
                     .value() :
@@ -115,7 +114,7 @@ module.exports = function (data) {
                 _.uniqBy(gameJamPositionsGrouped[gameId], function (gameJamPosition) {
 
                     // property order is non-deterministic in objects, so this may fail
-                    return JSON.stringify(_.pick(gameJamPosition, ['GameId', 'Period', 'Jam']));
+                    return JSON.stringify(_.pick(gameJamPosition, ['game_id', 'period', 'jam']));
                 }).length :
                 0;
 
@@ -124,7 +123,7 @@ module.exports = function (data) {
                 _.uniqBy(gameJamScoresGrouped[gameId], function (gameJamScore) {
 
                     // property order is non-deterministic in objects, so this may fail
-                    return JSON.stringify(_.pick(gameJamScore, ['GameId', 'Period', 'Jam']));
+                    return JSON.stringify(_.pick(gameJamScore, ['game_id', 'period', 'jam']));
                 }).length :
                 0;
 
@@ -135,13 +134,13 @@ module.exports = function (data) {
                 _(gameJamScoresGrouped[gameId])
                     .partition(function (gameJamScore) {
 
-                        return gameJamScore.Team === team;
+                        return gameJamScore.team === team;
                     })
                     .map(function (gameJamScoresForPartition) {
 
                         return _.sumBy(gameJamScoresForPartition, function (gameJamScore) {
 
-                            return parseInt(gameJamScore.Points, 10);
+                            return parseInt(gameJamScore.points, 10);
                         });
                     })
                     .value() :
