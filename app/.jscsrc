@@ -31,6 +31,15 @@
     "disallowSpacesInsideArrayBrackets": true,
     "disallowTrailingComma": true,
     "requireCommaBeforeLineBreak": true,
+    "requireCurlyBraces": [
+        "if",
+        "else",
+        "for",
+        "while",
+        "do",
+        "try",
+        "catch"
+    ],
     "requireDotNotation": true,
     "requireLineBreakAfterVariableAssignment": true,
     "requireLineFeedAtFileEnd": true,

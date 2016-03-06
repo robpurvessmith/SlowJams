@@ -1,31 +1,53 @@
 'use strict';
 
+var db = require('../middleware/db');
+var Promise = require('bluebird');
+
 var _ = require('lodash');
 
 var GameJamPosition = require('./game-jam-position');
 
 exports.getAll = function () {
 
-    return require('../test-data/dbo.GameJamScore.json');
+    var query = 'SELECT * FROM game_jam_score';
+
+    return db.any(query);
 };
 
 exports.getForPlayer = function (playerId) {
 
-    var jamsForPlayer = _.map(
+    return Promise.all([
         GameJamPosition.getForPlayer(playerId),
-        function (gameJamPosition) {
+        this.getAll()
+    ])
+        .spread(function (gameJamPositionsForPlayer, gameJamScores) {
 
-            return _.pick(gameJamPosition, ['GameId', 'Period', 'Jam']);
-        }
-    );
+            var jamsForPlayer = _.map(
+                gameJamPositionsForPlayer,
+                function (gameJamPosition) {
 
-    return _.filter(this.getAll(), function (gameJamScore) {
+                    return _.pick(gameJamPosition, ['game_id', 'period', 'jam']);
+                }
+            );
 
-        return _.find(jamsForPlayer, _.pick(gameJamScore, ['GameId', 'Period', 'Jam']));
-    });
+            return _.filter(gameJamScores, function (gameJamScore) {
+
+                return _.find(jamsForPlayer, _.pick(gameJamScore, ['game_id', 'period', 'jam']));
+            });
+        })
+        .catch(function (error) {
+
+            // TODO: handle error
+            console.log(error);
+        });
+
 };
 
 exports.getForGame = function (gameId) {
 
-    return _.filter(this.getAll(), { GameId: gameId });
+    return this.getAll()
+        .then(function (data) {
+
+            return _.filter(data, { game_id: gameId });
+        });
 };

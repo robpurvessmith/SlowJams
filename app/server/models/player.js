@@ -1,15 +1,27 @@
 'use strict';
 
+var db = require('../middleware/db');
 var _ = require('lodash');
 
 exports.getAll = function () {
 
-    return require('../test-data/dbo.Player.json');
+    var query = 'SELECT * FROM player';
+
+    return db.any(query);
 };
 
 exports.get = function (playerId) {
 
-    var allPlayers = _.indexBy(this.getAll(), 'PlayerId');
+    return this.getAll()
+        .then(function (data) {
 
-    return _.get(allPlayers, playerId, null);
+            var allPlayers = _.keyBy(data, 'player_id');
+
+            return _.get(allPlayers, playerId, null);
+        })
+        .catch(function (error) {
+
+            // TODO: handle error
+            console.log(error);
+        });
 }
