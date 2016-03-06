@@ -6,13 +6,12 @@ var pgp = require('pg-promise')({
     promiseLib: Promise,
 });
 
-// TODO: use environment variables for config values
 var cn = {
-    host: 'localhost',
-    port: 5432,
-    database: 'slowjams',
-    user: '',
-    password: ''
+    host: process.env.SLOWJAMS_POSTGRES_HOST,
+    port: process.env.SLOWJAMS_POSTGRES_PORT,
+    database: process.env.SLOWJAMS_POSTGRES_DBNAME,
+    user: process.env.SLOWJAMS_POSTGRES_USER,
+    password: process.env.SLOWJAMS_POSTGRES_PASSWORD
 };
 
 var db = pgp(cn);
