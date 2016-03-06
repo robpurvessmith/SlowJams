@@ -28,7 +28,7 @@ module.exports = function ($q, PlayerModel, GameModel) {
                     // TODO: use query params to do this in 1 query
                     return $q.all(_.map(gamePlayers, function (gamePlayer) {
 
-                        return GameModel.getGameJamScores(gamePlayer.GameId);
+                        return GameModel.getGameJamScores(gamePlayer.game_id);
                     }))
                         .then(function (results) {
 
