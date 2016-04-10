@@ -18,6 +18,10 @@ module.exports = function ($http) {
         getGameJamScores: function (playerId) {
 
             return $http.get('/api/v1/players/' + playerId + '/gameJamScores');
+        },
+        getGames: function (playerId) {
+
+            return $http.get('/api/v1/players/' + playerId + '/games');
         }
     };
 };
