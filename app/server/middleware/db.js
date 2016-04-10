@@ -1,16 +1,16 @@
 'use strict';
 
-var Promise = require('bluebird');
+var Bluebird = require('bluebird');
 
 var pgp = require('pg-promise')({
-    promiseLib: Promise,
+    promiseLib: Bluebird,
 });
 
 var cn = process.env.DATABASE_URL || {
     host: 'localhost',
     port: 5432,
     database: 'slowjams',
-    user: 'brandon',
+    user: '',
     password: ''
 };
 

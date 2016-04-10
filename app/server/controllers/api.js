@@ -6,6 +6,7 @@ var Player = require('../models/player');
 var GamePlayer = require('../models/game-player');
 var GameJamPosition = require('../models/game-jam-position');
 var GameJamScore = require('../models/game-jam-score');
+var Game = require('../models/game');
 
 exports.player = {
     get: function (req, res, next) {
@@ -45,6 +46,16 @@ exports.player = {
             .then(function (gameJamScoresForPlayer) {
 
                 res.send(gameJamScoresForPlayer);
+            });
+    },
+    getGames: function (req, res, next) {
+
+        var playerId = parseInt(req.params.playerId);
+
+        return Game.getForPlayer(playerId)
+            .then(function (gamesForPlayer) {
+
+                res.send(gamesForPlayer);
             });
     }
 };

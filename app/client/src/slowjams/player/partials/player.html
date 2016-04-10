@@ -1,7 +1,13 @@
 <div class="row">
     <div class="small-12 columns">
-        <h1>{{playerCtrl.player.derby_name}}</h1>
-        <br>
+        <h1>{{playerCtrl.player.derby_name}}&nbsp;#{{playerCtrl.player.number}}</h1>
+        <ul class="no-bullet">
+            <li><strong>Potential #1:</strong>&nbsp;{{playerCtrl.getPotential1DisplayValue()}}</li>
+            <li><strong>Potential #2:</strong>&nbsp;{{playerCtrl.getPotential2DisplayValue()}}</li>
+        </ul>
         <div ag-grid="playerCtrl.gridOptions" class="ag-fresh" style="height:500px;"></div>
+        <p class="mod-font-size-14">
+            <em>Showing {{playerCtrl.numGamesAfterFilter}} of {{playerCtrl.numGames}} games</em>
+        </p>
     </div>
 </div>
