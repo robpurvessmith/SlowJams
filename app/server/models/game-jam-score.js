@@ -1,53 +1,31 @@
 'use strict';
 
 var db = require('../middleware/db');
-var Promise = require('bluebird');
-
-var _ = require('lodash');
-
-var GameJamPosition = require('./game-jam-position');
-
-exports.getAll = function () {
-
-    var query = 'SELECT * FROM game_jam_score';
-
-    return db.any(query);
-};
 
 exports.getForPlayer = function (playerId) {
 
-    return Promise.all([
-        GameJamPosition.getForPlayer(playerId),
-        this.getAll()
-    ])
-        .spread(function (gameJamPositionsForPlayer, gameJamScores) {
+    var query =
+        'SELECT game_jam_score.* ' +
+        'FROM game_jam_score ' +
+        'WHERE (game_jam_score.game_id, game_jam_score.period, game_jam_score.jam) IN (' +
+            'SELECT game_id, period, jam ' +
+            'FROM game_jam_position ' +
+            'WHERE game_jam_position.player_id = $1' +
+        ')';
 
-            var jamsForPlayer = _.map(
-                gameJamPositionsForPlayer,
-                function (gameJamPosition) {
-
-                    return _.pick(gameJamPosition, ['game_id', 'period', 'jam']);
-                }
-            );
-
-            return _.filter(gameJamScores, function (gameJamScore) {
-
-                return _.find(jamsForPlayer, _.pick(gameJamScore, ['game_id', 'period', 'jam']));
-            });
-        })
-        .catch(function (error) {
-
-            // TODO: handle error
-            console.log(error);
-        });
-
+    return db.any(query, playerId);
 };
 
-exports.getForGame = function (gameId) {
+exports.getForGamesWherePlayerIsGamePlayer = function (playerId) {
 
-    return this.getAll()
-        .then(function (data) {
+    var query =
+        'SELECT game_jam_score.* ' +
+        'FROM game_jam_score ' +
+        'WHERE game_jam_score.game_id IN (' +
+            'SELECT game_id ' +
+            'FROM game_player ' +
+            'WHERE game_player.player_id = $1' +
+        ')';
 
-            return _.filter(data, { game_id: gameId });
-        });
+    return db.any(query, playerId);
 };

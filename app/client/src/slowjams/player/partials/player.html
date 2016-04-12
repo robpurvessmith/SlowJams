@@ -1,7 +1,55 @@
 <div class="row">
     <div class="small-12 columns">
-        <h1>{{playerCtrl.player.derby_name}}</h1>
-        <br>
-        <div ag-grid="playerCtrl.gridOptions" class="ag-fresh" style="height:500px;"></div>
+        <h1>{{playerCtrl.player.derby_name}}&nbsp;#{{playerCtrl.player.number}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        <tabset>
+            <tab heading="Games">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <ul class="no-bullet">
+                                    <li><strong>Potential #1:</strong>&nbsp;{{playerCtrl.formatPotential(playerCtrl.player.potential1)}}</li>
+                                    <li><strong>Potential #2:</strong>&nbsp;{{playerCtrl.formatPotential(playerCtrl.player.potential2)}}</li>
+                                </ul>
+                            </div>
+                            <div class="small-6 columns text-right">
+                                <button class="button small radius secondary" ng-click="playerCtrl.clearAllGamesTableFilters()">Clear Filters</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <div ag-grid="playerCtrl.gamesTableGridOptions" class="ag-fresh" style="height:500px;"></div>
+                                <p class="mod-font-size-14">
+                                    <em>Showing {{playerCtrl.numGamesAfterFilter}} of {{playerCtrl.numGames}} games</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Jams">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div class="row">
+                            <div class="small-12 columns text-right">
+                                <button class="button small radius secondary" ng-click="playerCtrl.clearAllJamsTableFilters()">Clear Filters</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <div ag-grid="playerCtrl.jamsTableGridOptions" class="ag-fresh" style="height:500px;"></div>
+                                <p class="mod-font-size-14">
+                                    <em>Showing {{playerCtrl.numJamsAfterFilter}} of {{playerCtrl.numJams}} jams</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
     </div>
 </div>

@@ -1,27 +1,13 @@
 'use strict';
 
 var db = require('../middleware/db');
-var _ = require('lodash');
-
-exports.getAll = function () {
-
-    var query = 'SELECT * FROM player';
-
-    return db.any(query);
-};
 
 exports.get = function (playerId) {
 
-    return this.getAll()
-        .then(function (data) {
+    var query =
+        'SELECT player.* ' +
+        'FROM player ' +
+        'WHERE player.player_id = $1';
 
-            var allPlayers = _.keyBy(data, 'player_id');
-
-            return _.get(allPlayers, playerId, null);
-        })
-        .catch(function (error) {
-
-            // TODO: handle error
-            console.log(error);
-        });
-}
+    return db.oneOrNone(query, playerId);
+};

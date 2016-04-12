@@ -12,7 +12,7 @@
 /* Override the font awesome font path since it is relative to our compiled CSS directory. The
  * assignment of $fa-font-path in /node_modules/font-awesome/scss/_variables.scss uses the !default
  * flag, so it won't be re-assigned to since we are assinging it here. */
-$fa-font-path: 'font-awesome/fonts';
+$fa-font-path: '/font-awesome/fonts';
 
 @import 'font-awesome/scss/font-awesome';
 
@@ -24,3 +24,36 @@ $fa-font-path: 'font-awesome/fonts';
 // -- App
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.mod-font-size-14 {
+    font-size: 14px;
+}
+
+.mod-color-green {
+    color: $success-color;
+}
+
+.mod-color-red {
+    color: $alert-color;
+}
+
+// tabs
+
+.tabs {
+    border-bottom: 1px solid #ddd;
+}
+
+.tabs dd > a {
+    padding: 10px 20px;
+    margin-bottom: -2px;
+    border-radius: 4px 4px 0 0;
+}
+
+.tabs dd.active > a {
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.callout {
+    background-color: $callout-panel-bg;
+}
