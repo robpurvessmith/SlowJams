@@ -1,14 +1,6 @@
 'use strict';
 
 var db = require('../middleware/db');
-var _ = require('lodash');
-
-exports.getAll = function () {
-
-    var query = 'SELECT * FROM game';
-
-    return db.any(query);
-};
 
 exports.getForPlayer = function (playerId) {
 
@@ -19,4 +11,4 @@ exports.getForPlayer = function (playerId) {
         'WHERE game_player.player_id = $1';
 
     return db.any(query, playerId);
-}
+};

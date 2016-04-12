@@ -14,6 +14,6 @@ router.get('/players/:playerId/gameJamScores', ApiController.player.getGameJamSc
 
 router.get('/players/:playerId/games', ApiController.player.getGames);
 
-router.get('/games/:gameId/gameJamScores', ApiController.game.getGameJamScores);
+router.get('/players/:playerId/jams', ApiController.player.getJams);
 
 module.exports = router;

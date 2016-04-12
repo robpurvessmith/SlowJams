@@ -1,25 +1,27 @@
 'use strict';
 
 var db = require('../middleware/db');
-var _ = require('lodash');
-
-exports.getAll = function () {
-
-    var query = 'SELECT * FROM game_player';
-
-    return db.any(query);
-};
 
 exports.getForPlayer = function (playerId) {
 
-    return this.getAll()
-        .then(function (data) {
+    var query =
+        'SELECT game_player.* ' +
+        'FROM game_player ' +
+        'WHERE game_player.player_id = $1';
 
-            return _.filter(data, { player_id: playerId });
-        })
-        .catch(function (error) {
+    return db.any(query, playerId);
+};
 
-            // TODO: handle error
-            console.log(error);
-        });
-}
+exports.getForGamesWherePlayerIsGamePlayer = function (playerId) {
+
+    var query =
+        'SELECT game_player.* ' +
+        'FROM game_player ' +
+        'WHERE game_player.game_id IN (' +
+            'SELECT game_id ' +
+            'FROM game_player ' +
+            'WHERE game_player.player_id = $1' +
+        ')';
+
+    return db.any(query, playerId);
+};

@@ -48,6 +48,18 @@ slowJams.config(['$routeProvider', function ($routeProvider) {
         });
 }]);
 
+// -- Config
+
+slowJams.config(['$tooltipProvider', function ($tooltipProvider) {
+
+    $tooltipProvider.options({
+        animation: true,
+        placement: 'top',
+        popupDelay: 500,
+        appendToBody: true
+    });
+}]);
+
 slowJams.controller('MainCtrl', [function () {
 
     var main = this;

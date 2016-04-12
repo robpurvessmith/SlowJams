@@ -1,54 +1,69 @@
 'use strict';
 
-var _ = require('lodash');
+var Util = require('../../../../../util/util');
 
-module.exports = function ($q, PlayerModel, GameModel) {
+module.exports = function ($q, PlayerModel) {
 
     return {
         getData: function (playerId) {
 
             var playerPromise = PlayerModel.get(playerId);
-            var gamePlayersPromise = PlayerModel.getGamePlayers(playerId);
-            var gameJamPositionsPromise = PlayerModel.getGameJamPositions(playerId);
-            var gameJamScoresPromise = PlayerModel.getGameJamScores(playerId);
+            var gamePlayersForPlayerPromise = PlayerModel.getGamePlayers(playerId);
+            var gamePlayersPromise = PlayerModel.getGamePlayers(
+                playerId,
+                { includeAllRowsForGamesWherePlayerIsGamePlayer: 1 }
+            );
+            var gameJamPositionsForPlayerPromise = PlayerModel.getGameJamPositions(playerId);
+            var gameJamPositionsPromise = PlayerModel.getGameJamPositions(
+                playerId,
+                { includeAllRowsForGamesWherePlayerIsGamePlayer: 1 }
+            );
+            var gameJamScoresForPlayerPromise = PlayerModel.getGameJamScores(playerId);
+            var gameJamScoresPromise = PlayerModel.getGameJamScores(
+                playerId,
+                { includeAllRowsForGamesWherePlayerIsGamePlayer: 1 }
+            );
             var gamesPromise = PlayerModel.getGames(playerId);
+            var jamsPromise = PlayerModel.getJams(
+                playerId,
+                { includeAllRowsForGamesWherePlayerIsGamePlayer: 1 }
+            );
 
             return $q.all([
                 playerPromise,
+                gamePlayersForPlayerPromise,
                 gamePlayersPromise,
+                gameJamPositionsForPlayerPromise,
                 gameJamPositionsPromise,
+                gameJamScoresForPlayerPromise,
                 gameJamScoresPromise,
-                gamesPromise
+                gamesPromise,
+                jamsPromise
             ])
-                .then(function (results) {
+                .then(Util.qSpread(function (
+                    player,
+                    gamePlayersForPlayer,
+                    gamePlayers,
+                    gameJamPositionsForPlayer,
+                    gameJamPositions,
+                    gameJamScoresForPlayer,
+                    gameJamScores,
+                    games,
+                    jams
+                ) {
 
-                    var player = results[0].data;
-                    var gamePlayers = results[1].data;
-                    var gameJamPositions = results[2].data;
-                    var gameJamScoresForPlayer = results[3].data;
-                    var games = results[4].data;
-
-                    // TODO: use query params to do this in 1 query
-                    return $q.all(_.map(gamePlayers, function (gamePlayer) {
-
-                        return GameModel.getGameJamScores(gamePlayer.game_id);
-                    }))
-                        .then(function (results) {
-
-                            return {
-                                player: player,
-                                gamePlayers: gamePlayers,
-                                gameJamPositions: gameJamPositions,
-                                gameJamScoresForPlayer: gameJamScoresForPlayer,
-                                games: games,
-                                gameJamScores: _.map(results, 'data')
-                            };
-                        })
-                        .catch(function (error) {
-
-                            // TODO: handle error
-                        });
-                })
+                    return {
+                        player: player,
+                        gamePlayersForPlayer: gamePlayersForPlayer,
+                        gamePlayers: gamePlayers,
+                        gameJamPositionsForPlayer: gameJamPositionsForPlayer,
+                        gameJamPositions: gameJamPositions,
+                        gameJamScoresForPlayer: gameJamScoresForPlayer,
+                        gameJamScores: gameJamScores,
+                        games: games,
+                        jams: jams
+                    };
+                }))
                 .catch(function (error) {
 
                     // TODO: handle error
